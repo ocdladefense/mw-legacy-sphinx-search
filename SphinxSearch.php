@@ -48,6 +48,7 @@ if ( !class_exists( 'SphinxClient' ) ) {
 }
 
 
+// Make sure the global settings have been set.
 validateSphinxGlobalSettings();
 
 
@@ -107,9 +108,8 @@ function efSphinxSearchPrefixSetup() {
 	}
 }
 
-error_reporting(E_ALL);    
-ini_set('display_errors', 1);
 
+// Make sure the global settings have been set.
 function validateSphinxGlobalSettings(){
 
 	global $wgSphinxSearch_host, $wgSphinxSearch_port, $wgSphinxSearch_index, $wgSphinxSearch_index_list;
