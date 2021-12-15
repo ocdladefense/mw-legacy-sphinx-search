@@ -48,6 +48,9 @@ if ( !class_exists( 'SphinxClient' ) ) {
 }
 
 
+validateSphinxGlobalSettings();
+
+
 
 # If you have multiple index files, you can specify their weights like this
 # See http://www.sphinxsearch.com/docs/current.html#api-func-setindexweights
@@ -101,5 +104,30 @@ function efSphinxSearchPrefixSetup() {
 
 	if ( $wgEnableSphinxPrefixSearch ) {
 		$wgHooks[ 'PrefixSearchBackend' ][ ] = 'SphinxMWSearch::prefixSearch';
+	}
+}
+
+error_reporting(E_ALL);    
+ini_set('display_errors', 1);
+
+function validateSphinxGlobalSettings(){
+
+	global $wgSphinxSearch_host, $wgSphinxSearch_port, $wgSphinxSearch_index, $wgSphinxSearch_index_list;
+
+
+	$globalSettings = array(
+		"wgSphinxSearch_host" 		=> $wgSphinxSearch_host,
+		"wgSphinxSearch_port" 		=> $wgSphinxSearch_port,
+		"wgSphinxSearch_index" 		=> $wgSphinxSearch_index,
+		"wgSphinxSearch_index_list" => $wgSphinxSearch_index_list
+	);
+
+	foreach($globalSettings as $label => $setting) {
+
+		if(empty($setting)) {
+
+			die("SPHINX_EXTENSION_SETTINGS_ERROR: The '$$label' global setting has not not been set. Check your 'LocalSettings.php' or 'SiteSpecificSettings.php'.");
+
+		}
 	}
 }
