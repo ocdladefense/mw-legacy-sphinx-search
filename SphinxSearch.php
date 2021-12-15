@@ -47,18 +47,7 @@ if ( !class_exists( 'SphinxClient' ) ) {
 	require_once ( $dir . "sphinxapi.php" );
 }
 
-# Host and port on which searchd deamon is running
-$wgSphinxSearch_host = '172.31.47.173';
-$wgSphinxSearch_port = 9312;
 
-# Main sphinx.conf index to search
-$wgSphinxSearch_index = "wiki_main";
-
-# By default, we search all available indexes
-# You can also specify them explicitly, e.g
-# $wgSphinxSearch_index_list = "wiki_main,wiki_incremental";
-# $wgSphinxSearch_index_list = "*";
-$wgSphinxSearch_index_list = "wiki_main";
 
 # If you have multiple index files, you can specify their weights like this
 # See http://www.sphinxsearch.com/docs/current.html#api-func-setindexweights
